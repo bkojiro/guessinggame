@@ -20,15 +20,17 @@ int main(){
     while (keepGuess == true){
       cout << "Make your guess!";
       numGuesses++;
-      char input;
-      cin >> input;
-      if (input == target){ //guess is correct
+      char input[3];
+      cin.get(input, 3); //smth about this is messing up
+      int inputAsNum = atoi(input);
+      cout << inputAsNum;
+      if (inputAsNum == target){ //guess is correct
 	cout << "yay!";
 	keepGuess = false;
       } else { //guess is incorrect
-	if (input > target){
+	if (inputAsNum > target){
 	  cout << "Too high!";
-	} else if (input < target) {
+	} else if (inputAsNum < target) {
 	  cout << "Too low!";
 	}          
       }
@@ -37,13 +39,13 @@ int main(){
     //player win
     cout << "Congratulations! You guessed the correct number";
     cout << "It took you " << numGuesses << " guesses! Press y to play again, or press n to quit";
-    char input;
-    cin >> input;
-    if (input == 'y'){
+    char pAInput;
+    cin >> pAInput;
+    if (pAInput == 'y'){
       keepGuess = true;
       numGuesses = 0;
       
-    } else if (input == 'n'){
+    } else if (pAInput == 'n'){
       playAgain = false;
     }
   }
